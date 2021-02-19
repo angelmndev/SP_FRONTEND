@@ -36,7 +36,22 @@ const ListarControlHoras = async() => {
 }
 
 
+const ListarControlHorasPorFecha = async(fechaInicio,fechaFin,idMaquinaFK) => {
+    console.log("API Filtro HORAS");
+    console.log(fechaInicio,fechaFin)
+    const config = {
+        method: 'GET'
+    };
+
+    const responseApi = await fetch(`${API_URL}/buscar/${fechaInicio}/${fechaFin}/${idMaquinaFK}`,config);
+    const response = await responseApi.json();
+
+    return response;
+
+}
+
 module.exports = {
     AgregarControlHoras,
-    ListarControlHoras
+    ListarControlHoras,
+    ListarControlHorasPorFecha
 }

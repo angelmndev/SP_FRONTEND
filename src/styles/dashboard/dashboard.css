@@ -36,3 +36,8 @@
   border: none;
   background: none;
 }
+
+.custom-tab{
+   height : fit-content;
+   color:#363636;
+}

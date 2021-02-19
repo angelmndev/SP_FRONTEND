@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Input, Row, Col, Button, Select } from 'antd'
-import { DatePicker, Space } from 'antd';
+import { Form, Input, Row, Col, Button, Select, Alert } from 'antd'
 
 //Api
 import { ListarMaquinas } from '../../services/maquinas/MaquinasApi';
 import { AgregarControlHoras } from '../../services/controlHoras/ControlHorasApi';
 
-export default function NuevoUsuario() {
+import { openNotificationSuccess } from './Notificacion'
+
+
+export default function NuevoUsuario({ listarControlHoras}) {
 
     const { Option } = Select;
     const [form] = Form.useForm();
@@ -15,21 +17,20 @@ export default function NuevoUsuario() {
     const [maquinas, setMaquinas] = useState([]);
 
 
-
     const agregarControlHoras = async (value) => {        
 
         const { success } = await AgregarControlHoras(value,1);
         if (success) {
+            listarControlHoras();
+            openNotificationSuccess();
+            form.resetFields()
             console.log("Acceso usuario insertardo");
         }
-    }
-
-    const [fecha,setFecha]=useState();        
-
+    }    
 
     useEffect(() => {
         ListarMaquinas()
-            .then(data => setMaquinas(data))
+            .then(data => setMaquinas(data))        
     }, []);
 
 
@@ -77,9 +78,9 @@ export default function NuevoUsuario() {
                         labelCol={{ span: 24 }}
                         wrapperCol={{ span: 24 }}
                     >
-                        <Button type="primary" htmlType="submit">
-                            Registrar
-                         </Button>
+                        <Button type="primary" style={{ border: "#00DE6F", color: "white", background: "#00DE6F", width: "10%" }} htmlType="submit">
+                            <p style={{ fontWeight: "bold" }}>Registrar</p>
+                        </Button>
                     </Form.Item>
                 </Col>
 

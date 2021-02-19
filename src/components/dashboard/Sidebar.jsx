@@ -21,26 +21,33 @@ const Sidebar = () => {
                     <Link to={`${url}/sedes`}>Sedes</Link>
                 </Menu.Item>
 
-                <Menu.Item key="sub4-1" icon={<PartitionOutlined />}>
+                <Menu.Item key="main2" icon={<PartitionOutlined />}>
                     <Link to={`${url}/areaCultivo`}>Areas cultivos</Link>
                 </Menu.Item>
-                <Menu.Item key="sub8" icon={<DollarOutlined />}>
+                <Menu.Item key="main3" icon={<DollarOutlined />}>
                     <Link to={`${url}/maquinas`}>Maquinas</Link>
                 </Menu.Item>
-                <Menu.Item key="sub8" icon={<DollarOutlined />}>
+                <Menu.Item key="main4" icon={<DollarOutlined />}>
                     <Link to={`${url}/componentes`}>Componetes</Link>
                 </Menu.Item>
-                <SubMenu key="sub5" icon={<TeamOutlined />} title="Usuarios">
-                    <Menu.Item key="sub5-1">
+                <SubMenu key="main5" icon={<TeamOutlined />} title="Usuarios">
+                    <Menu.Item key="sub-1">
                         <Link to={`${url}/usuarios`}>Usuario</Link>
                     </Menu.Item>
-                    <Menu.Item key="sub5-2"><Link to={`${url}/roles`}></Link>Roles</Menu.Item>
+                    <Menu.Item key="sub-2"><Link to={`${url}/roles`}></Link>Roles</Menu.Item>
                 </SubMenu>
-                <Menu.Item key="sub4-2" icon={<DeploymentUnitOutlined />}>
+                <Menu.Item key="main7" icon={<DeploymentUnitOutlined />}>
+                    <Link to={`${url}/ordenTrabajo`}>Orden de trabajo</Link>
+                </Menu.Item>
+                <Menu.Item key="main8" icon={<DeploymentUnitOutlined />}>
                     <Link to={`${url}/controlHoras`}>Control de horas</Link>
                 </Menu.Item>
-                <Menu.Item key="sub4-2" icon={<DeploymentUnitOutlined />}>
-                    <Link to={`${url}/mantenimientoPrevente`}>Mantenimiento preventivo</Link>
+                <Menu.Item key="main9" icon={<DeploymentUnitOutlined />}>
+                    <Link to={`${url}/mantenimiento`}>Mantenimiento preventivo</Link>
+                </Menu.Item>
+
+                <Menu.Item key="main10" icon={<DeploymentUnitOutlined />}>
+                    <Link to={`${url}/indicadores`}>Indicadores</Link>
                 </Menu.Item>
             </Menu>
         </Sider>

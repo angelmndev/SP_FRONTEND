@@ -7,12 +7,10 @@ import { Layout, Menu, Avatar, Dropdown } from 'antd'
 const Navbar = () => {
     const { Header } = Layout;
     return (
-        <Header className="header">
+        <Header style={{ background:"#212F3D"}} >
             <div>
-                <h2 > Logística SPA</h2>
-            </div>
-            
-
+                <h2 >MP</h2>
+            </div>            
         </Header>
     )
 }
