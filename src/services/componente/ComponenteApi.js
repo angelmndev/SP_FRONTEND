@@ -1,5 +1,19 @@
 const API_URL = `${process.env.REACT_APP_API_URL}/componentes`;
 
+const AgregarComponenteApi = async(value) => {
+    console.log("componente",value);
+    const config = {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify(value)
+    };
+
+    const responseApi = await fetch(API_URL,config);
+    const componente = await responseApi.json();
+
+    return componente;
+}
+
 const ListarComponentes = async () => {
     console.log("Api de componenete");
     const config = {
@@ -14,5 +28,6 @@ const ListarComponentes = async () => {
 
 
 module.exports = {
-    ListarComponentes
+    ListarComponentes,
+    AgregarComponenteApi
 }

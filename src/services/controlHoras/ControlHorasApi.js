@@ -36,14 +36,16 @@ const ListarControlHoras = async() => {
 }
 
 
-const ListarControlHorasPorFecha = async(fechaInicio,fechaFin,idMaquinaFK) => {
-    console.log("API Filtro HORAS");
-    console.log(fechaInicio,fechaFin)
+const ListarControlHorasPorFecha = async(fechaI,fechaF,idMaquinaFK) => {
+
+    const {fechaInicio} = fechaI;
+    const {fechaFinal} = fechaF;
+    console.log(fechaFinal);
     const config = {
         method: 'GET'
     };
 
-    const responseApi = await fetch(`${API_URL}/buscar/${fechaInicio}/${fechaFin}/${idMaquinaFK}`,config);
+    const responseApi = await fetch(`${API_URL}/buscar/${fechaInicio}/${fechaFinal}/${idMaquinaFK}`,config);
     const response = await responseApi.json();
 
     return response;

@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
 import { Space, Tabs, Table, Empty, Modal, Input, Row, Card, Col } from 'antd';
 import { Checkbox } from 'antd';
-import NuevoOrdenTrabajo from './NuevoOrdenTrabajo';
 import { Fragment } from 'react';
 
 
-const RegistroOrdenTrabajo = ({ listMantPreventivo }) => {
+const AprobarOrdentrabajo = ({ listaOrdenTrabajo }) => {
 
     const { TabPane } = Tabs;
 
@@ -18,7 +17,7 @@ const RegistroOrdenTrabajo = ({ listMantPreventivo }) => {
         password: ''
     })
     const data = [];
-    listMantPreventivo.map((item, index) => {
+    listaOrdenTrabajo.map((item, index) => {
         data.push({
             orden: index+1,
             idMaquinaFK: item.idMaquinaFK,
@@ -105,4 +104,4 @@ const RegistroOrdenTrabajo = ({ listMantPreventivo }) => {
     )
 }
 
-export default RegistroOrdenTrabajo
+export default AprobarOrdentrabajo

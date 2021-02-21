@@ -39,15 +39,24 @@ const Sidebar = () => {
                 <Menu.Item key="main7" icon={<DeploymentUnitOutlined />}>
                     <Link to={`${url}/ordenTrabajo`}>Orden de trabajo</Link>
                 </Menu.Item>
+
                 <Menu.Item key="main8" icon={<DeploymentUnitOutlined />}>
+                    <Link to={`${url}/finalizarOrden`}>Finalizar orden</Link>
+                </Menu.Item>
+
+                <Menu.Item key="main9" icon={<DeploymentUnitOutlined />}>
                     <Link to={`${url}/controlHoras`}>Control de horas</Link>
                 </Menu.Item>
-                <Menu.Item key="main9" icon={<DeploymentUnitOutlined />}>
+                <Menu.Item key="main10" icon={<DeploymentUnitOutlined />}>
                     <Link to={`${url}/mantenimiento`}>Mantenimiento preventivo</Link>
                 </Menu.Item>
 
-                <Menu.Item key="main10" icon={<DeploymentUnitOutlined />}>
+                <Menu.Item key="main11" icon={<DeploymentUnitOutlined />}>
                     <Link to={`${url}/indicadores`}>Indicadores</Link>
+                </Menu.Item>
+
+                <Menu.Item key="main12" icon={<DeploymentUnitOutlined />}>
+                    <Link to={`${url}/maquinas`}>Maquinas</Link>
                 </Menu.Item>
             </Menu>
         </Sider>

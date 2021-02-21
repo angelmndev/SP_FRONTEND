@@ -52,6 +52,8 @@ const OrdenTrabajoContainer = () => {
     useEffect(() => {
         listarMaquinas();
         listarTipoMantenimiento();
+        obtenerDtos();
+        filtrarDatos();
     }, [])
 
     const setEditModalUsuario = (id) => {
@@ -88,10 +90,7 @@ const OrdenTrabajoContainer = () => {
         setNumeroOrden(data);
     }
 
-    useEffect(() => {
-        obtenerDtos();
-    }, [])
-
+ 
     const filtrarDatos = async () => {
         const dataFiltro = [{ idMaquinaFK: idMaquinaFK, mpFecha: fecha, idTipoMantenimientoFK: idTMantenimiento }];
         const data = await ListarMantPreventivoFiltro(dataFiltro)
@@ -184,7 +183,6 @@ const OrdenTrabajoContainer = () => {
                                     <NuevoOrdenTrabajo listMantPreventivo={listMantPreventivo} numeroOrden={numeroOrden} />
                                 </TabPane> : ''
                         }
-
 
                     </Tabs>
 

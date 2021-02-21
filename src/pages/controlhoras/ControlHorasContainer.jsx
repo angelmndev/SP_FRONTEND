@@ -18,29 +18,44 @@ const ControlHorasContainer = () => {
     const [maquinas,setMaquinas] = useState([]);
 
     //filtro
-    const [idMaquinaFK,setIdMaquinaFk] = useState([]);
-    const [fecha,setFecha] = useState([]);
+    const [idMaquinaFK,setIdMaquinaFK] = useState();
+    const [fechaInicio,setFechaInicio] = useState();
+    const [fechaFinal,setFechaFinal] = useState();
+
+    //
+    const [reset,setRest] = useState(false);
 
    const listarMaquinas = async() => {
        const data = await ListarMaquinas();
        setMaquinas(data);
+      
    }
 
     const listarControlHoras = async()=>{
         const data = await ListarControlHoras();
         setControlHoras(data);
+        setRest(false);
     }
    
 
 
     //Maquinas
     const changeMaquinas = (value) => {
-        setIdMaquinaFk(value);
+        setIdMaquinaFK(value);
     }
 
+
     //fecha inicio y fecha fin
-    const changenFecha = (value) => {
-        setFecha(value);
+    const changenFecha = (dates, dateStrings) => {
+      //  console.log('From: ', dateStrings[0], ', to: ', dateStrings[1]);
+        setFechaInicio({
+            ...fechaInicio,
+            fechaInicio: dateStrings[0],            
+        })
+
+        setFechaFinal({
+            fechaFinal: dateStrings[1]
+        })
     }
 
 
@@ -51,10 +66,9 @@ const ControlHorasContainer = () => {
 
 
     const filtrarControlHoras = async () => {
-        const data = await ListarControlHorasPorFecha(fecha[0], fecha[1], idMaquinaFK);
-        if (data) {
-            setMaquinas(data);
-        }
+        const data = await ListarControlHorasPorFecha(fechaInicio, fechaFinal, idMaquinaFK);       
+        setControlHoras(data);    
+        setRest(true);    
     }
     console.log("Container");
     console.log(controlHoras);
@@ -80,7 +94,7 @@ const ControlHorasContainer = () => {
 
                                         <Select
                                             placeholder="Selecciona maquina"
-                                            style={{ width: '100%' }}       
+                                            style={{ width: '100%' }}                                                
                                             onChange={changeMaquinas}                                     
                                         >
                                             {maquinas.map((item) => (
@@ -91,17 +105,23 @@ const ControlHorasContainer = () => {
                                     <Col xs={22} md={4}>
                                         <RangePicker
                                             placeholder={["Fecha inicio", "Fecha fin"]}
-                                            format="DD-MM-YYYY"
+                                            
                                             style={{ marginBottom: '1em', marginRight: '1em' }}
                                         onChange={changenFecha} />                                                                                   
                                     </Col>
                                   
                                     <Col xs={22} md={4}>
-                                        <Button onClick={filtrarControlHoras} type="primary" style={{ border: "#00DE6F", color: "white", background: "#00DE6F", width: "80%" }} htmlType="submit">
+                                        {
+                                            reset?
+                                            <Button onClick={listarControlHoras} type="primary" style={{ border: "#00DE6F", color: "white", background: "#00DE6F", width: "80%" }} htmlType="submit">
+                                            <p style={{ fontWeight: "bold" }}>Mostrar todo</p>
+                                            </Button>:
+                                            <Button onClick={filtrarControlHoras} type="primary" style={{ border: "#00DE6F", color: "white", background: "#00DE6F", width: "80%" }} htmlType="submit">
                                             <p style={{ fontWeight: "bold" }}>Buscar</p>
-                                        </Button>
-                                    </Col>
+                                            </Button>
+                                        }                                                                                
 
+                                    </Col>                                                                                                            
                                 </Row>
 
                             </Card>

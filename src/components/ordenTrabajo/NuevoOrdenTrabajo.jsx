@@ -7,6 +7,7 @@ import { ListarSede } from '../../services/sede/SedeApi';
 import { ListarAreaCultivoApi } from '../../services/areaCultivo/AreaCultivoApi';
 import { ListarUsuarioApi } from '../../services/usuario/UsuarioApi';
 import { AgregarOrdenTrabajoApi } from '../../services/ordenTrabajo/OrdenTrabajoApi';
+import { AgregarOrdenTrabajoDetalleApi } from '../../services/ordenTrabajoDetalle/OrdenTrabajoDetalleApi';
 
 
 export default function NuevoOrdenTrabajo({ numeroOrden, listMantPreventivo}) {
@@ -28,10 +29,17 @@ export default function NuevoOrdenTrabajo({ numeroOrden, listMantPreventivo}) {
 
     const { Option } = Select;
 
+    console.log(listMantPreventivo);
     const GuardarOrdenTrabajo = async(value)=> {
         const data = await AgregarOrdenTrabajoApi(value, listMantPreventivo[0].idMaquinaFK,1);
+       
         if(data){
-            console.log("Insertado Exitosamente");
+
+            const dataOTD = await AgregarOrdenTrabajoDetalleApi(listMantPreventivo);
+
+            if(dataOTD){
+                console.log("Insertado Exitosamente");
+            }            
         }
     }
 
@@ -64,7 +72,6 @@ export default function NuevoOrdenTrabajo({ numeroOrden, listMantPreventivo}) {
                 </Col>
                 <Col md={10}>
                     <Form.Item
-                        extra="El nombre de usuario solo puede ser de 6 caracteres."
                         name="idSedeFK"
                         label="Sede"
                         labelCol={{ span: 24 }}
