@@ -1,7 +1,6 @@
 import React from 'react';
-import { Fragment } from 'react';
 
-import { Layout, Menu, Avatar, Dropdown } from 'antd'
+import { Layout } from 'antd'
 
 
 const Navbar = () => {

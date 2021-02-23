@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Fragment } from 'react';
 import { Descriptions, Row, Col } from 'antd'
-import { Tag } from 'antd'
 import { Divider, Tabs } from 'antd'
 
 import NuevoMPreventivo from '../../components/mPreventivo/NuevoMPreventivo';

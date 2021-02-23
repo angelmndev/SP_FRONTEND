@@ -42,17 +42,33 @@ const ListarOrdenTrabajoDetalleApi = async()=>{
 
 
 const ListarOrdenTrabajoDetallePorNumero = async(numero) => {
+    console.log("numero",numero);
     const config = {
         method: 'GET'
     };
 
-    const responseApi = await fetch(`${API_URL}/filtrar/${numero}`,config)
+    const responseApi = await fetch(`${API_URL}/filter/${numero}`,config)
     const response = await responseApi.json();
+    return response;
+}
+
+const AgregarEjecutadoObservacionApi = async(data) => {
+    console.log("API",data);
+    const config = {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify(data)
+    }
+
+    const responseApi = await fetch(`${API_URL}/ejecutado`,config);
+    const response = await responseApi.json();
+
     return response;
 }
 
 module.exports = {
     ListarOrdenTrabajoDetalleApi,
     AgregarOrdenTrabajoDetalleApi,
-    ListarOrdenTrabajoDetallePorNumero
+    ListarOrdenTrabajoDetallePorNumero,
+    AgregarEjecutadoObservacionApi
 }

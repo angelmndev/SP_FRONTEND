@@ -104,7 +104,7 @@ const OrdenTrabajoContainer = () => {
             {/* component description */}
             <Descriptions title="Control de horas" >
                 <Descriptions.Item >
-                    Bienvenido a la sección control de horas.
+                    Bienvenido a la sección de control de horas.
             </Descriptions.Item>
             </Descriptions>
             <Divider />
@@ -123,6 +123,9 @@ const OrdenTrabajoContainer = () => {
                                             style={{ width: '100%' }}
                                             onChange={changeFecha}
                                         >
+                                            {/*Esta valor es estatico, carga la fecha segun si aproximacion 
+                                            de control de horas a hora de referencia.. hoy > 8 < 24 .....mañana>24 and < 48
+                                             */}
                                             <Option key='1' value='1'>Hoy</Option>
                                             <Option key='2' value='3'>Mañana</Option>
                                             <Option key='3' value='3'>Pasadomañana</Option>
@@ -169,7 +172,9 @@ const OrdenTrabajoContainer = () => {
                                 <Col xs={22}>
                                     {
                                         listMantPreventivo.length ?
-                                            <Button onClick={() => setEstadoTab(true)} >Generar orden de trabajo</Button>
+                                        <Button onClick={() => setEstadoTab(true)} type="primary" style={{ border: "#00DE6F", color: "white", background: "#00DE6F"}} htmlType="submit">
+                                        <p style={{ fontWeight: "bold" }}>Generar orden de trabajo</p>
+                                        </Button>
                                             : ''
                                     }
 

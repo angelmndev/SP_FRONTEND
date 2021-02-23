@@ -1,22 +1,10 @@
 import React, { useState } from 'react'
-import { Space, Tabs, Table, Empty, Modal, Input, Row, Card, Col } from 'antd';
-import { Checkbox } from 'antd';
-import NuevoOrdenTrabajo from './NuevoOrdenTrabajo';
+import { Table, Empty } from 'antd';
 import { Fragment } from 'react';
 
 
 const RegistroOrdenTrabajo = ({ listMantPreventivo }) => {
 
-    const { TabPane } = Tabs;
-
-    const [visible, setVisible] = useState(false);
-    const [confirmLoading, setConfirmLoading] = useState(false);
-
-
-    const [user, setUser] = useState({
-        id: 0,
-        password: ''
-    })
     const data = [];
     listMantPreventivo.map((item, index) => {
         data.push({
@@ -59,29 +47,7 @@ const RegistroOrdenTrabajo = ({ listMantPreventivo }) => {
             dataIndex: 'mpTarea',
             key: 'mpTarea',
             render: (comNombre => <p>{comNombre}</p>),
-        },
-
-        {
-            title: 'Ejecutado',//rcavezas@beginTransaction.com.pe
-            dataIndex: 'ejecutado',
-            key: 'ejecutado',
-            render: ()=>{
-                return(
-                    <Checkbox>La taerea fue finalizado.?</Checkbox>
-                )
-            } 
-        },
-
-        {
-            title: 'Observacion',//rcavezas@beginTransaction.com.pe
-            dataIndex: 'observacion',
-            key: 'observacion',
-            render: ()=>{
-                return(
-                    <Input/>
-                )
-            }                  
-        },
+        },       
     ];
 
 
@@ -91,16 +57,8 @@ const RegistroOrdenTrabajo = ({ listMantPreventivo }) => {
 
             {data.length > 0 ?
                 <Table size="small" bordered columns={columns} rowKey={"idUsuario"} dataSource={data} pagination={{ pageSize: 5 }} />
-                : <Empty description={"No hay usuarios registradas hasta el momento."} style={{ padding: '4em' }} />
-            }
-            <Modal
-                title="Cambiando la contraseña "
-            >
-
-                <label>Ingresa la nueva contraseña:</label>
-                <Input.Password name="password" value={user.password} placeholder="nueva contraseña" />
-
-            </Modal>
+                : <Empty description={"No hay registro de orden de trabajo hasta el momento."} style={{ padding: '4em' }} />
+            }          
         </Fragment>
     )
 }

@@ -1,5 +1,5 @@
 import React,{useEffect, useState} from 'react';
-import { Select, Card, Col, Row, Button, Spin } from 'antd';
+import { Select, Card, Spin } from 'antd';
 
 import RegistroOrdenTrabajo from '../ordenTrabajo/RegistroOrdenTrabajo';
 import { Fragment } from 'react';

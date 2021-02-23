@@ -47,7 +47,7 @@ export default function NuevoUsuario({ listarControlHoras}) {
                         rules={[{ required: true, message: 'ingrese el rol' }]}
                     >
                         <Select
-                            placeholder="Selecciona un rol"
+                            placeholder="Seleccione una maquina"
                             allowClear
                         >
 
